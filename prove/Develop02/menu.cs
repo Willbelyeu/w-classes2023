@@ -36,7 +36,7 @@ public void FileRead()
         Console.WriteLine("What file do you want to read?");
         string openedFile = Console.ReadLine();
         //Pass the file path and file name to the StreamReader constructor
-        StreamReader sr = new StreamReader("journal.txt");
+        StreamReader sr = new StreamReader(openedFile);
         //Read the first line of text
         string line = sr.ReadLine();
         //Continue to read until you reach end of file
