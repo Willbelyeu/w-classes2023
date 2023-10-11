@@ -2,8 +2,16 @@ using Microsoft.Win32.SafeHandles;
 
 public class Menu
 {
-    public void FileStore()
+    public void FileStore(Journal journal)
     {
+        {
+            Console.WriteLine($"What is the file you wish to write to?");
+            string FileToStore = Console.ReadLine();
+            File.WriteAllText(FileToStore, journal.SendToJournal());
+        }
+    }
+    public Entry MakeEntry()
+        {        
         List<string> prompts = new List<string>();
         prompts.Add("How was your day?");
         prompts.Add("Who was the most intersting person you talked to today?");
@@ -15,18 +23,12 @@ public class Menu
         Random rnd = new Random();
         int num = rnd.Next(0, 5);
         Console.WriteLine($"{prompts[num]}");
-        string entry = Console.ReadLine();
+        string userEntry = Console.ReadLine();
         string date = DateTime.Now.ToString();
-        Console.WriteLine("Save? press 1 for yes, or 2 for no.");
-        string save = Console.ReadLine();
-        if (save == "1")
-        {
-            Console.WriteLine($"What is the file you wish to write to?");
-            string FileToStore = Console.ReadLine();
-            string TextToStore = ($"{date} {prompts[num]} {entry}");
-            File.WriteAllText(FileToStore, TextToStore);
+        Entry entry=new Entry(prompts[num], date, userEntry);
+        return entry;
         }
-    }
+
 
 public void FileRead()
 {

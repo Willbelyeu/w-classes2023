@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        menuLoop runThrough=new menuLoop();
-        runThrough.MenuLoop();
+        MenuLoop runThrough=new MenuLoop();
+        runThrough.Run();
     }
 }
