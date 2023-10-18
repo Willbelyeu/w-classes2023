@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Press enter when ready to begin.");
+        Console.WriteLine("Press enter when ready to begin, and a new scripture will show on screen.");
         Console.ReadLine();
         // call the scriptures list from Scripture and name it scriptures.
         Scriptures scriptures=new Scriptures();
@@ -26,10 +26,19 @@ class Program
             // Console.WriteLine($"{currentScripture}");
             Console.WriteLine("To end program enter 'quit', to continue hit enter.");
             string Continue = Console.ReadLine();
+            var key=System.Console.ReadKey(true);
             if (Continue=="quit"){
+                Console.WriteLine("Ending program.");                
                 break;
             }
-            else {
+            else if (Continue!=""){
+                //meant to keep not end the loop but tell people they entered wrong. Does not currently work.
+                Console.Clear();
+                Console.WriteLine($"You entered '{Continue}'. We assume you meant enter. Possibly this is return on your keyboard.");
+                Console.WriteLine("");
+                Console.WriteLine("");
+            }            
+            else if (key.Key==ConsoleKey.Enter){
                 Console.Clear();                          
             }
         }
