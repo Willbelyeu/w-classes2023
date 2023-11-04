@@ -6,19 +6,21 @@ public class Breathing:Activity{
     public Breathing(string name, int duration):base(name, duration){
         _name=name;
         _duration=duration;
+        _introduction=introduction;
+    }
+        
 
+    public void BreathingProcess(){
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(_duration);
         DateTime currentTime = DateTime.Now;
-        Console.WriteLine($"{introduction}");
-        Thread.Sleep(5000);
-        while (currentTime < futureTime)
-        {
-            currentTime = DateTime.Now;
+
+        while (currentTime<futureTime){
+            currentTime=DateTime.Now;
             Console.WriteLine("Breath in...");
             Thread.Sleep(1000);
-            int x=3;
             bool stage1 =true;
+            int x=3;
             while (stage1==true){
                 if (x>0){
                     x-=1;
@@ -29,7 +31,7 @@ public class Breathing:Activity{
                 else if(x==0){
                     x=3;
                     stage1=false;
-                }                
+                }
             }
             Console.WriteLine("Breath out...");
             Thread.Sleep(1000);

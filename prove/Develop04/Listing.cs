@@ -9,11 +9,11 @@ public class ListingActivity:Activity{
     public ListingActivity(string name, int duration):base(name, duration){
         _name=name;
         _duration=duration;
+        _introduction=introduction;
     }
     public void ListingProcess(){
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(_duration);
-        Console.WriteLine($"{introduction}");
 
         Random random=new Random();
         int promptChoice=random.Next(0,4);
@@ -45,6 +45,6 @@ public class ListingActivity:Activity{
             currentTime=DateTime.Now;
         }
         int entryCount=userEntries.Count();
-        Console.WriteLine($"{entryCount+1}");
+        Console.WriteLine($"You listed {entryCount+1} responses.");
     }
 }

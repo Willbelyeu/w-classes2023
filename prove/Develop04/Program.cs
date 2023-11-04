@@ -13,18 +13,22 @@ class Menu
             if (activityNext=="1"){
                 Console.Clear();
                 Reflection reflection=new Reflection("Reflection", duration);
+                reflection.DisplayIntroduction();
                 reflection.ReflectionProcess();
                 reflection.DisplayAchievement();
             }
             else if (activityNext=="2"){
                 Console.Clear();
                 ListingActivity listing=new ListingActivity("Listing Activity", duration);
+                listing.DisplayIntroduction();
                 listing.ListingProcess();
                 listing.DisplayAchievement();
             }
             else if (activityNext=="3"){
                 Console.Clear();
                 Breathing Runthrough=new Breathing("Breathing Activity", duration);
+                Runthrough.DisplayIntroduction();
+                Runthrough.BreathingProcess();
                 Runthrough.DisplayAchievement();
             }
             else if (activityNext=="4"){
