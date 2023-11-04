@@ -2,6 +2,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml.Schema;
 
 public class Breathing:Activity{
+    //This class holds the process for the breathing activity.
+    // introduction is for the intro. 
     private string introduction=("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
     public Breathing(string name, int duration):base(name, duration){
         _name=name;
@@ -21,6 +23,7 @@ public class Breathing:Activity{
             Thread.Sleep(1000);
             bool stage1 =true;
             int x=3;
+            // x is used to store the countdown which is displayed.
             while (stage1==true){
                 if (x>0){
                     x-=1;

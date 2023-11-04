@@ -3,6 +3,8 @@ using System.Xml.Schema;
 
 public class Activity
 {
+    //this class holds data used for the three activity classes.
+    // Name refers to the activity name, duration the time in seconds for the activity. Introduction is the intro.
     protected string _name;
     protected int _duration;
     protected string _introduction;
