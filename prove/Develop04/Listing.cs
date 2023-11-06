@@ -5,7 +5,8 @@ public class ListingActivity:Activity{
     //prompts is a list for userprompts, introduction gives us a intro, and userEntries is where the user's responses are recorded.
     private string introduction=("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
     private string[] prompts={"Who are people that you appreciate?", "What are personal strengths of yours?", "Who are people that you have helped this week?", "When have you felt the Holy Ghost this month?", "Who are some of your personal heroes?"};
-    private string[] userEntries={};
+    private List<string> userEntries=new List<string>();
+    //userEntries had to be in list rather than array in order to count the entries.
  
     public ListingActivity(string name, int duration):base(name, duration){
         _name=name;
@@ -45,12 +46,12 @@ public class ListingActivity:Activity{
         while (currentTime<futureTime){
             Console.WriteLine("Press enter to submit your choice.");
             string userEntry=Console.ReadLine();
-            userEntries.Append(userEntry);
+            userEntries.Add(userEntry);
             Console.WriteLine("Keep entering until time is up.");
             currentTime=DateTime.Now;
         }
         int entryCount=userEntries.Count();
-        //I think this is still not counting right, but I am out of time to fix it. I'm not sure why it isn't working either. 
+        //entryCount and userEntries now works. 
         Console.WriteLine($"You listed {entryCount} responses.");
     }
 }
