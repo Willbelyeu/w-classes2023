@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Enumeration;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 class Menu
@@ -8,8 +9,11 @@ class Menu
     static void Main(string[] args)
     {
         List <string> goalList=new List<string>();
+        int score=0;
+        string emptySampleString=("Eternal--Paternal--External--0--0--0--0");
         while (true){
             //display current points.
+            Console.WriteLine($"Your score is {score}");
             Console.WriteLine($"Menu options:");
             Console.WriteLine($"1 create new goal");
             Console.WriteLine($"2 list goals");
@@ -28,18 +32,18 @@ class Menu
                 string goaltype=Console.ReadLine();
                 if (goaltype=="1"){
                     //call eternal newgoal
-                    Eternal eternal=new Eternal();
+                    Eternal eternal=new Eternal(emptySampleString);
                     string newgoal=eternal.NewGoal();
                     goalList.Add(newgoal);
                 }
                 else if (goaltype=="2"){
-                    Checklist checklist=new Checklist();
+                    Checklist checklist=new Checklist(emptySampleString);
                     string newgoal=checklist.NewGoal();
                     goalList.Add(newgoal);
                 }
                 else if (goaltype=="3"){
                     //call normal newgoal
-                    Normal normal=new Normal();
+                    Normal normal=new Normal(emptySampleString);
                     string newgoal=normal.NewGoal();
                     goalList.Add(newgoal);
                 }
@@ -48,15 +52,19 @@ class Menu
                 //call method to list your current goals. They should be in three seperate lists each called seperatly so you know what type they are. 
                 //Belay that. The type is the first word of the goal string.
                 foreach (string goal in goalList){
-                        //string goalline2=($"{goaltype}--{goalname}--{goaldiscription}--{points-per-completion}--{finalpoints}--{timescompleted}/{completions-needed}");
                         var stringArray=goal.Split("--");
-                        int timesCompleted=(Convert.ToInt32(stringArray[5]));
-                        int completionsNeeded=(Convert.ToInt32(stringArray[6]));
-                        if (timesCompleted>=completionsNeeded){
-                        Console.WriteLine($"{stringArray[0]} goal, {stringArray[1]}. {stringArray[2]}. {stringArray[5]}/{stringArray[6]}. Goal complete.");
+                        string classCalled=stringArray[0];
+                        if (classCalled=="Eternal"){
+                            Eternal eternal=new Eternal(goal);
+                            eternal.DisplayGoal();
                         }
-                        else if (timesCompleted<completionsNeeded){
-                        Console.WriteLine($"{stringArray[0]} goal, {stringArray[1]}. {stringArray[2]}. {stringArray[5]}/{stringArray[6]}. Goal not complete.");
+                        else if (classCalled=="Checklist"){
+                            Checklist checklist=new Checklist(goal);
+                            checklist.DisplayGoal();
+                        }
+                        else if (classCalled=="Normal"){
+                            Normal normal=new Normal(goal);
+                            normal.DisplayGoal();
                         }
                 }
             }
@@ -92,26 +100,37 @@ class Menu
                 string goaltype=stringArray[0];
                 if (goaltype=="Eternal"){
                     //call eternal newgoal
-                    Eternal eternal=new Eternal();
-                    string completed=eternal.Completed();
-                    goalList[goalnumber]=completed;
+                    Eternal eternal=new Eternal(goalCompleted);
+                    int completed=eternal.Completed();
+                    score+=completed;
+                    //find out how to replace the line in the goalList, but otherwise this is great.
+                    //ask the tutors about that one. Other than that it looks fine.
                 }
                 else if (goaltype=="Checklist"){
-                    Checklist checklist=new Checklist();
-                    string completed=checklist.Completed();
-                    goalList[goalnumber]=completed;
+                    Checklist checklist=new Checklist(goalCompleted);
+                    int completed=checklist.Completed();
+                    score+=completed;
+                    //find out how to replace the line in the goalList, but otherwise this is great.
                 }
                 else if (goaltype=="Normal"){
-                    Normal normal=new Normal();
-                    string completed=normal.Completed();
-                    goalList[goalnumber]=completed;
-                // 
+                    Normal normal=new Normal(goalCompleted);
+                    int completed=normal.Completed();
+                    score+=completed;
+                    //find out how to replace the line in the goalList, but otherwise this is great.
+                
             }
             else if (selection=="6"){
+                //This option is not currently working. Review in the morning.
                 Console.WriteLine("Closing program.");
                 break;
             }
         }
     }
 }
+/*
+Issues remaining:
+Unable to update the list to mark completion of a goal.
+Closing does not work.
+No feature to store points if I need to reload.
+*/
 }

@@ -1,17 +1,29 @@
 using System.Runtime.CompilerServices;
 
 class Normal:Goal{
-    private List <string> normal=new List<string>();
-    private string goaltype="Normal";
-    private string completionsneeded="1";
-    public override void Completed()
+
+    public Normal(string savedFile):base(savedFile){
+        //nothing should be needed, as there are no new veriables.
+    }
+    public override void DisplayGoal()
     {
-        base.Completed();
+        Console.WriteLine($"{_goalType} goal, {_goalName}. {_goalDiscription} {_timesCompleted}/{_completionsNeeded}");
+    }
+    public override int Completed()
+    {
+        if (_pointsPerCompletion==_completionsNeeded){
+            _timesCompleted+=0;
+            return 0;
+        }
+        else {
+            _timesCompleted+=1;
+            return _finalPoints;
+        }
     }
     public override string NewGoal()
     {
         base.NewGoal();
-        string goalline=($"{goaltype}--{goalname}--{goaldiscription}--0--{points}--0--/--{completionsneeded}");
+        string goalline=($"Normal--{_goalName}--{_goalDiscription}--{_pointsPerCompletion}--0--0--1");
         return goalline;
     }
 }
