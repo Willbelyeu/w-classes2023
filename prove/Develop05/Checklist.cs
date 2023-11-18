@@ -11,13 +11,13 @@ class Checklist:Goal{
     }
 
     public override int Completed(){
-        if (_pointsPerCompletion==_completionsNeeded){
-            _timesCompleted+=0;
-            return 0;
-        }
-        else if (_pointsPerCompletion+1==_completionsNeeded){
+        if ((_timesCompleted+1)==_completionsNeeded){
             _timesCompleted+=1;
             return _finalPoints;
+        }
+        else if (_timesCompleted==_completionsNeeded){
+            _timesCompleted+=0;
+            return 0;
         }
         else{
             _timesCompleted+=1;

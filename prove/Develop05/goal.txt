@@ -1,4 +1,4 @@
-7
+20
 Eternal--bob--Billybob--3--0--1--0
-Checklist--gob--Hobgoblin--3--10--1--3
+Checklist--gob--Hobgoblin--3--10--3--3
 Normal--bear--bugbear--25--0--1--1

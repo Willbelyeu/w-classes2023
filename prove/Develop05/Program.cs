@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Enumeration;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
@@ -72,22 +73,32 @@ class Menu
                 //call method to save modfications to your goals.
                 Console.WriteLine("What is the name of the file you wish to save? sample filename, goals.txt.");
                 string fileName=Console.ReadLine();
-                foreach (string goal in goalList){
                     using (StreamWriter outputFile = new StreamWriter(fileName))
                     {
-                    // You can use the $ and include variables just like with Console.WriteLine
-                        outputFile.WriteLine($"{goal}");
+                        outputFile.WriteLine($"{score}");                            
                     }
-                }
+                foreach (string goal in goalList){
+                    using (StreamWriter outputFile = new StreamWriter(fileName, true))
+                    {
+                        outputFile.WriteLine($"{goal}");                            
+                    }
+                } 
             }
             else if (selection=="4"){
                 //call method to Load your goals.
                 Console.WriteLine("What is the name of the file you wish to load?");
                 string filename=Console.ReadLine();
                 //Load the file and read it by line into the goallist.
+                bool skipLine=true;
                 string[] lines = System.IO.File.ReadAllLines(filename);
                 foreach (string line in lines){
-                    goalList.Add(line);
+                    if (skipLine){
+                        score=Convert.ToInt32(line);
+                        skipLine=false;
+                    }
+                    else{
+                        goalList.Add(line);
+                    }
             }
             }
             else if (selection=="5"){
@@ -98,39 +109,47 @@ class Menu
                 string goalCompleted=goalList[goalnumber];
                 var stringArray=goalCompleted.Split("--");
                 string goaltype=stringArray[0];
+                int completed=0;
                 if (goaltype=="Eternal"){
                     //call eternal newgoal
                     Eternal eternal=new Eternal(goalCompleted);
-                    int completed=eternal.Completed();
+                    completed=eternal.Completed();
                     score+=completed;
                     //find out how to replace the line in the goalList, but otherwise this is great.
                     //ask the tutors about that one. Other than that it looks fine.
                 }
                 else if (goaltype=="Checklist"){
                     Checklist checklist=new Checklist(goalCompleted);
-                    int completed=checklist.Completed();
+                    completed=checklist.Completed();
                     score+=completed;
                     //find out how to replace the line in the goalList, but otherwise this is great.
                 }
                 else if (goaltype=="Normal"){
                     Normal normal=new Normal(goalCompleted);
-                    int completed=normal.Completed();
+                    completed=normal.Completed();
                     score+=completed;
+                }
                     //find out how to replace the line in the goalList, but otherwise this is great.
-                
+                if (completed!=0){
+                    //timesCompleted is stringArray[5]
+                    int timesCompleted=Convert.ToInt32(stringArray[5]);
+                    timesCompleted+=1;
+                    string updatedString=($"{stringArray[0]}--{stringArray[1]}--{stringArray[2]}--{Convert.ToInt32(stringArray[3])}--{Convert.ToInt32(stringArray[4])}--{timesCompleted}--{Convert.ToInt32(stringArray[6])}");
+                    goalList[goalnumber]=updatedString;
+                }
+                //
             }
             else if (selection=="6"){
-                //This option is not currently working. Review in the morning.
                 Console.WriteLine("Closing program.");
                 break;
             }
         }
     }
-}
 /*
-Issues remaining:
-Unable to update the list to mark completion of a goal.
-Closing does not work.
-No feature to store points if I need to reload.
+Issues remaining:                   
+Unable to update the list to mark completion of a goal.   ###RESOLVED###
+Closing does not work.                                    ###RESOLVED###
+No feature to store points if I need to reload.           ###RESOLVED###
+Checklist completed doesn't work. Eternal does. testing Normal. Normal doesn't work.
 */
 }

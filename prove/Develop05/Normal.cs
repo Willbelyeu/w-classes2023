@@ -11,13 +11,13 @@ class Normal:Goal{
     }
     public override int Completed()
     {
-        if (_pointsPerCompletion==_completionsNeeded){
+        if (_timesCompleted==_completionsNeeded){
             _timesCompleted+=0;
             return 0;
         }
-        else {
-            _timesCompleted+=1;
-            return _finalPoints;
+        else{
+            _timesCompleted=1;
+            return _timesCompleted;
         }
     }
     public override string NewGoal()
