@@ -145,11 +145,4 @@ class Menu
             }
         }
     }
-/*
-Issues remaining:                   
-Unable to update the list to mark completion of a goal.   ###RESOLVED###
-Closing does not work.                                    ###RESOLVED###
-No feature to store points if I need to reload.           ###RESOLVED###
-Checklist completed doesn't work. Eternal does. testing Normal. Normal doesn't work.
-*/
 }
