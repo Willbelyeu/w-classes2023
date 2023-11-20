@@ -52,9 +52,12 @@ class Menu
             else if (selection=="2"){
                 //call method to list your current goals. They should be in three seperate lists each called seperatly so you know what type they are. 
                 //Belay that. The type is the first word of the goal string.
+                int listCounter=0;
                 foreach (string goal in goalList){
                         var stringArray=goal.Split("--");
                         string classCalled=stringArray[0];
+                        Console.Write(listCounter+"-");
+                        listCounter+=1;
                         if (classCalled=="Eternal"){
                             Eternal eternal=new Eternal(goal);
                             eternal.DisplayGoal();
