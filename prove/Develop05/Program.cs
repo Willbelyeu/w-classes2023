@@ -12,8 +12,15 @@ class Menu
         List <string> goalList=new List<string>();
         int score=0;
         string emptySampleString=("Eternal--Paternal--External--0--0--0--0");
+            var stringArray=emptySampleString.Split("--");
+            string goalType=stringArray[0];
+            string goalName=stringArray[1];
+            string goalDiscription=stringArray[2];
+            int pointsPerCompletion=Convert.ToInt32(stringArray[3]);
+            int finalPoints=Convert.ToInt32(stringArray[4]);
+            int timesCompleted=Convert.ToInt32(stringArray[5]);
+            int completionsNeeded=Convert.ToInt32(stringArray[6]);
         while (true){
-            //display current points.
             Console.WriteLine($"Your score is {score}");
             Console.WriteLine($"Menu options:");
             Console.WriteLine($"1 create new goal");
