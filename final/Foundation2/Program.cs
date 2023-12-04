@@ -23,6 +23,7 @@ class Program
         Customer customer1=new Customer("Alexander Bilington", "412 River Bolivard", "Houstan", "TX", "America");
         Order order1=new Order(customer1, customer1OrderList);
         string packingLabel=order1.PackingLabel();
+        Console.WriteLine("");
         Console.WriteLine(packingLabel);
         Console.WriteLine(order1.ShippingLabel());
         Console.WriteLine($"${order1.FinalPrice()}");
@@ -44,6 +45,7 @@ class Program
         Customer customer2=new Customer("Rapheal Smith", "324 River street", "London", "LD", "Great Briton");
         Order order2=new Order(customer2, customer2OrderList);
         packingLabel=order2.PackingLabel();
+        Console.WriteLine("");
         Console.WriteLine(packingLabel);
         Console.WriteLine(order2.ShippingLabel());
         Console.WriteLine($"${order2.FinalPrice()}");

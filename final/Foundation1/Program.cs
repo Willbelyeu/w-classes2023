@@ -97,7 +97,6 @@ class Program
         Video thirdVideo=new Video(thirdVideoTitle,thirdVideoAuthor,thirdVideoSeconds,thirdVideoCommments);
         videos.Add(thirdVideo);
 
-        Console.WriteLine("Bird");
         foreach (var video in videos){
             int count=video.commentCount();
             Console.WriteLine($"{video._title} by {video._author}, {video._length} seconds long, {count} comments.");
