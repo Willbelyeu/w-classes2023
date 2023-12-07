@@ -14,22 +14,22 @@ class Program
         List <Comment> firstVideoCommments=new List<Comment>();
 
         string firstVideoFirstCommentAuthor= "Arthur1";
-        string firstVideoFirstComment= "that looked painful1.";
+        string firstVideoFirstComment= "    that looked painful.";
         Comment firstCommentFirstVideo=new Comment(firstVideoFirstCommentAuthor,firstVideoFirstComment);
         firstVideoCommments.Add(firstCommentFirstVideo);
 
         string firstVideoSecondCommentAuthor= "Luke2";
-        string firstVideoSecondComment= "Is he alright?2";
+        string firstVideoSecondComment= "   Is he alright?";
         Comment firstCommentSecondVideo=new Comment(firstVideoSecondCommentAuthor,firstVideoSecondComment);
         firstVideoCommments.Add(firstCommentSecondVideo);
 
         string firstVideoThirdCommentAuthor= "Arthur3";
-        string firstVideoThirdComment= "that looked painful.3";
+        string firstVideoThirdComment= "    Is he bleeding?";
         Comment firstVideoCommentThird=new Comment(firstVideoThirdCommentAuthor,firstVideoThirdComment);
         firstVideoCommments.Add(firstVideoCommentThird);
 
         string firstVideoFourthCommentAuthor= "Luke4";
-        string firstVideoFourthComment= "Is he alright?4";
+        string firstVideoFourthComment= "   Why did he do this again?";
         Comment firstVideoCommentFourth=new Comment(firstVideoFourthCommentAuthor,firstVideoFourthComment);
         firstVideoCommments.Add(firstVideoCommentFourth);
 
@@ -45,22 +45,22 @@ class Program
         List <Comment> secondVideoCommments=new List<Comment>();
 
         string secondVideoFirstCommentAuthor= "Arthur1";
-        string secondVideoFirstComment= "that looked painful.";
+        string secondVideoFirstComment= "   that looked painful.";
         Comment secondCommentFirstVideo=new Comment(secondVideoFirstCommentAuthor,secondVideoFirstComment);
         secondVideoCommments.Add(secondCommentFirstVideo);
 
         string secondVideoSecondCommentAuthor= "Luke2";
-        string secondVideoSecondComment= "Is he alright?";
+        string secondVideoSecondComment= "  Is he alright?";
         Comment secondCommentSecondVideo=new Comment(secondVideoSecondCommentAuthor,secondVideoSecondComment);
         secondVideoCommments.Add(secondCommentSecondVideo);
 
         string secondVideoThirdCommentAuthor= "Arthur3";
-        string secondVideoThirdComment= "that looked painful.";
+        string secondVideoThirdComment= "   why do people keep doing this?";
         Comment secondVideoCommentThird=new Comment(secondVideoThirdCommentAuthor,secondVideoThirdComment);
         secondVideoCommments.Add(secondVideoCommentThird);
 
         string secondVideoFourthCommentAuthor= "Luke4";
-        string secondVideoFourthComment= "Is he alright?";
+        string secondVideoFourthComment= "  He should see a doctor.";
         Comment secondVideoCommentFourth=new Comment(secondVideoFourthCommentAuthor,secondVideoFourthComment);
         secondVideoCommments.Add(secondVideoCommentFourth);
 
@@ -68,29 +68,29 @@ class Program
         videos.Add(secondVideo);
 // moving to the third video
 
-        string thirdVideoTitle="Gary2";
+        string thirdVideoTitle="Dancing With the Stars";
         string thirdVideoAuthor="Gary2";
-        int thirdVideoSeconds=62; 
+        int thirdVideoSeconds=32; 
 
         List <Comment> thirdVideoCommments=new List<Comment>();
 
         string thirdVideoFirstCommentAuthor= "Arthur1";
-        string thirdVideoFirstComment= "that looked painful.";
+        string thirdVideoFirstComment= "    Stars can't dance.";
         Comment thirdCommentFirstVideo=new Comment(thirdVideoFirstCommentAuthor,thirdVideoFirstComment);
         thirdVideoCommments.Add(thirdCommentFirstVideo);
 
         string thirdVideoSecondCommentAuthor= "Luke2";
-        string thirdVideoSecondComment= "Is he alright?";
+        string thirdVideoSecondComment= "   @Arthur1 he meant movie stars.";
         Comment firstCommentthirdVideo=new Comment(thirdVideoSecondCommentAuthor,thirdVideoSecondComment);
         thirdVideoCommments.Add(firstCommentthirdVideo);
 
-        string thirdVideoThirdCommentAuthor= "Arthur3";
-        string thirdVideoThirdComment= "that looked painful.";
+        string thirdVideoThirdCommentAuthor= "Arthur1";
+        string thirdVideoThirdComment= "    I stand by my words.";
         Comment thirdVideoCommentThird=new Comment(thirdVideoThirdCommentAuthor,thirdVideoThirdComment);
         thirdVideoCommments.Add(thirdVideoCommentThird);
 
         string thirdVideoFourthCommentAuthor= "Luke4";
-        string thirdVideoFourthComment= "Is he alright?";
+        string thirdVideoFourthComment= "   Neither of you watched the video, did you?";
         Comment thirdVideoCommentFourth=new Comment(thirdVideoFourthCommentAuthor,thirdVideoFourthComment);
         thirdVideoCommments.Add(thirdVideoCommentFourth);
 
@@ -99,10 +99,12 @@ class Program
 
         foreach (var video in videos){
             int count=video.commentCount();
-            Console.WriteLine($"{video._title} by {video._author}, {video._length} seconds long, {count} comments.");
-            foreach (var comment in video._comments){
-                Console.WriteLine(comment._author);
-                Console.WriteLine(comment._comment);
+            Console.WriteLine("");
+            Console.WriteLine($"    {video.GetTitle()} by {video.GetAuthor()}, {video.GetLength()} seconds long, {count} comments.");
+            foreach (var comment in video.GetList()){
+
+                Console.WriteLine(comment.GetAuthor());
+                Console.WriteLine(comment.GetComment());
             }
         }
     }

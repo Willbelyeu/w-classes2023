@@ -30,7 +30,7 @@ class Program
         discription="The wedding reception of Mr. and newly Mrs. Doe";
         date="07/04/2002";
         time="9:00A.M.";
-        title="Doe reception.";
+        title="Doe reception";
         street="527 Mainstreeet";
         city="Browntown";
         state="Arazona";
@@ -50,7 +50,7 @@ class Program
         discription="A great chance to get out and meet new people, we will be dancing in the morning in the park";
         date="07/11/2008";
         time="11:00A.M.";
-        title="Country dancing in the park.";
+        title="Country dancing in the park";
         street="527 Mainstreeet";
         city="Brovo";
         state="New Mexico";
