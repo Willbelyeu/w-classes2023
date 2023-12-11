@@ -20,10 +20,14 @@ class Program
         string shortIntro = lecture.ShortDescription();
         string intro=lecture.StandardDetails();
         string fullIntro = lecture.FullDetails();
+        Console.WriteLine("");
         Console.WriteLine(shortIntro);
+        Console.WriteLine("");
         Console.WriteLine(intro);
+        Console.WriteLine("");
         Console.WriteLine(fullIntro);
 
+        Console.WriteLine("");
         Console.WriteLine("");
 
         string email="JohnDoe@bogus.com";
@@ -41,9 +45,12 @@ class Program
         fullIntro=reception.FullDetails();
         shortIntro=reception.ShortDescription();
         Console.WriteLine($"{shortIntro}");
+        Console.WriteLine("");
         Console.WriteLine($"{intro}");
+        Console.WriteLine("");
         Console.WriteLine($"{fullIntro}");
 
+        Console.WriteLine("");
         Console.WriteLine("");
 
         string weather="sunny";
@@ -60,7 +67,9 @@ class Program
         fullIntro=gathering.FullDetails();
         shortIntro=gathering.ShortDescription();
         Console.WriteLine($"{shortIntro}");
+        Console.WriteLine("");
         Console.WriteLine($"{intro}");
+        Console.WriteLine("");
         Console.WriteLine($"{fullIntro}");
     }
 }
